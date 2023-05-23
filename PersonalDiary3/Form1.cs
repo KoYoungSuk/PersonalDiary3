@@ -38,7 +38,7 @@ namespace PersonalDiaryUpdater
 
                 Boolean existstatus = diarydao.getTableExists("DIARY");  //테이블 존재 검사
 
-                if (existstatus)
+                if (existstatus) //테이블이 존재하면 이동하기 
                 {
                     MainForm mf = new MainForm(conn);
                     mf.Show();
@@ -53,6 +53,7 @@ namespace PersonalDiaryUpdater
                         int result = diarydao.createTable(sql);
                         if(result != 0)
                         {
+                            //테이블 만들고 이동하기 
                             g.informationmessage("Table is successfully created.");
                             MainForm mf = new MainForm(conn);
                             mf.Show();

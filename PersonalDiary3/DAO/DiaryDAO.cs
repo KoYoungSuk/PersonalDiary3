@@ -129,6 +129,7 @@ namespace PersonalDiaryUpdater
             return diarylist;
         }
 
+        #region["일기장 개수 가져오기"] 
         public int getDiaryCount()
         {
             int diarynumber = 0;
@@ -143,6 +144,8 @@ namespace PersonalDiaryUpdater
             scmd.Dispose();
             return diarynumber;
         }
+        #endregion
+
 
         #region["테이블 존재 유무 검사"]
         public Boolean getTableExists(String tname)

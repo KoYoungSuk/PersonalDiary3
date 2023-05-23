@@ -72,5 +72,10 @@ namespace PersonalDiaryUpdater
                 button1.PerformClick(); 
             }
         }
+
+        private void FTPSettingForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -150,6 +150,7 @@
             this.MinimizeBox = false;
             this.Name = "FTPSettingForm";
             this.Text = "SFTP Server Setting ";
+            this.Load += new System.EventHandler(this.FTPSettingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

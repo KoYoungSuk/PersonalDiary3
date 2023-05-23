@@ -102,7 +102,7 @@ namespace PersonalDiaryUpdater
             };
 
 
-            FtpClient fc = new FtpClient("ftp://kysot.yspersonal.com", "kys", "gaeun1318hyoam!$"); 
+            FtpClient fc = new FtpClient("ftp://kysot.yspersonal.com", "kys", "password"); 
             fc.Connect();
            
             fc.UploadFile(FileName, "/Upload/PersonalDiary2/" + String.Concat(Version.Where(c => !char.IsWhiteSpace(c))) + "/" + SafeFileName , FtpRemoteExists.Overwrite, true); 

@@ -15,6 +15,9 @@ namespace PersonalDiaryUpdater
 {
     public partial class DetailForm : Form
     {
+        //제목이 Null: 작성 모드
+        //제목이 Null이 아님: 수정/읽기 모드(modify boolean값 파라미터로 구분)
+
         String title;
         Global g = new Global();
         OracleConnection conn = null;

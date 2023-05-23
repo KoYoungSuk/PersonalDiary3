@@ -23,9 +23,9 @@ namespace PersonalDiaryUpdater
         {
             InitializeComponent();
             this.conn = conn;
-            label7.Text = g.checkOS();
+            label7.Text = g.checkOS(); 
             label6.Text = "Success Connect to DataBase, Everything are good. at [ " + DateTime.Now.ToString() + " ] ";
-            getDiary(false);
+            getDiary(false); //일기장 목록 로드 
         }
 
         public void getLabel()
@@ -33,22 +33,22 @@ namespace PersonalDiaryUpdater
             try
             {
                 DiaryDAO diarydao = new DiaryDAO(conn);
-                int number = diarydao.getDiaryCount();
+                int number = diarydao.getDiaryCount(); //일기장 목록 개수 가져오기 
                 label4.Text = "NUMBER: " + number;
             }catch(Exception ex)
             {
                 g.errormessage(ex.Message);
             }
         }
-        public void getDiary(Boolean desc)
+        public void getDiary(Boolean desc) //desc: 정렬순서 정하는거 
         {
             try
             {
                 DiaryDAO diarydao = new DiaryDAO(conn);
-                DataTable dt = diarydao.getDiaryList2(desc);
-                dt.Columns.RemoveAt(1);
-                dataGridView1.DataSource = dt;
-                getLabel();
+                DataTable dt = diarydao.getDiaryList2(desc); 
+                dt.Columns.RemoveAt(1); 
+                dataGridView1.DataSource = dt; //그리드뷰에 집어넣기 
+                getLabel(); 
             }catch(Exception ex)
             {
                 g.errormessage(ex.Message);
@@ -59,8 +59,9 @@ namespace PersonalDiaryUpdater
             conn.Close();
             if (File.Exists("sftp.txt"))
             {
+                //SFTP 로그인 정보를 삭제할껀지 물어봄 
                 DialogResult dr = g.informationmessage("Do you want to delete sftp setting?");
-                if (dr == DialogResult.OK)
+                if (dr == DialogResult.OK) //삭제한다고 하면 삭제함 
                 {
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
@@ -76,8 +77,9 @@ namespace PersonalDiaryUpdater
             conn.Close();
             if (File.Exists("sftp.txt"))
             {
+               //SFTP 로그인 정보를 삭제할껀지 물어봄 
                DialogResult dr = g.informationmessage("Do you want to delete sftp setting?");
-               if (dr == DialogResult.OK)
+               if (dr == DialogResult.OK) //삭제한다고 하면 삭제함 
                {
                    GC.Collect();
                    GC.WaitForPendingFinalizers();
@@ -132,14 +134,14 @@ namespace PersonalDiaryUpdater
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DetailForm df = new DetailForm(null, true, conn);
+            DetailForm df = new DetailForm(null, true, conn); //새로 작성하는 모드 
             df.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             String title = textBox1.Text;
-            DetailForm df = new DetailForm(title, true, conn);
+            DetailForm df = new DetailForm(title, true, conn); //선택한 셀의 제목에 맞춰서 상세 일기장 내용으로 이동 (수정) 
             df.Show();
         }
 
@@ -153,8 +155,8 @@ namespace PersonalDiaryUpdater
                 if(result == 1)
                 {
                     g.informationmessage("Success Deleted.");
-                    g.DeleteSFTP(title + ".txt"); //TXT FILE ONLY. 
-                    getDiary(false); 
+                    g.DeleteSFTP(title + ".txt"); //TXT FILE ONLY. //SFTP 서버에 있는 일기장 파일 삭제 
+                    getDiary(false); //일기장 목록 다시 로드 
                 }
                 else
                 {
@@ -166,6 +168,7 @@ namespace PersonalDiaryUpdater
             }
         }
 
+        #region["텍스트상자에서 엔터키를 누르면 그 제목에 맞는 상세 일기장 내용으로 이동"] 
         private void text_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
@@ -175,18 +178,23 @@ namespace PersonalDiaryUpdater
                 df.Show();
             }
         }
+        #endregion
 
+        #region["셀을 한번 클릭하면 텍스트상자에 제목 출력"] 
         private void GridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
+        #endregion
 
+        #region("셀을 한번 더 출력하면 출력한 제목에 따라서 상세 일기장 내용으로 이동"] 
         private void GridView_DoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             String title = textBox1.Text;
             DetailForm df = new DetailForm(title, false, conn);
             df.Show();
         }
+        #endregion
 
         private void blogToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -206,14 +214,14 @@ namespace PersonalDiaryUpdater
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Close();
-            if (File.Exists("sftp.txt"))
+            if (File.Exists("sftp.txt")) //SFTP 로그인 정보가 저장되어 있는 경우 삭제할껀지 물어봄. 
             {
                 DialogResult dr = g.informationmessage("Do you want to delete sftp setting?");
-                if (dr == DialogResult.OK)
+                if (dr == DialogResult.OK) 
                 {
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
-                    File.Delete("sftp.txt");
+                    File.Delete("sftp.txt"); //삭제하겠다고 하면 삭제함. 
                     g.informationmessage("Successfully deleted.");
                 }
                 else

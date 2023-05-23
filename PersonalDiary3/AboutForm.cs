@@ -84,7 +84,7 @@ namespace PersonalDiaryUpdater
 
                          string maxver = diarydao.GetMaxVer(); //최신 버전 찾기 
 
-                         FtpClient fc = new FtpClient("ftp://kysot.yspersonal.com", "kys", "gaeun1318hyoam!$");
+                         FtpClient fc = new FtpClient("ftp://kysot.yspersonal.com", "kys", "password");
 
                          fc.Connect();
 
