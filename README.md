@@ -1,12 +1,29 @@
-MyDiary(.NET 6.0)
+# MyDiary
+VERSION 3.7 2023-05-27
 
-Version 3.7 (2023-05-27)
+Visual Studio Community 2022/.NET 6.0 
 
-Support NET 6.0 and Microsoft Windows 7 64-bit or later.(Require Windows 10 and Windows 11.)
+Supported Operating System: Windows 7 SP1 64-bit or higher. 
 
-You need Oracle DataBase Server and SFTP Server.
+NOTICE: You need Oracle DataBase Server and SFTP Server. 
+(If you don't have Table. this program will create this.) 
+
+HOW TO USE SOURCE CODE: 
+  1. INSTALL GIT ON YOUR COMPUTER. (https://git-scm.com)
+  2. Open Command Prompt. (Run as Administrator)
+     If You use Linux. Open Terminal. 
+  4. Make or Select Cloned Path.
+  5. Type command: git clone https://github.com/KoYoungSuk/PersonalDiary3.git
+  
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------
+  # Screenshot 
 
 
-Screenshot
+![image](https://github.com/KoYoungSuk/PersonalDiary3/assets/58511486/5bbb29ba-c256-4f69-b667-1039d61b6005)
 
-![image](https://github.com/KoYoungSuk/PersonalDiary3/assets/58511486/fd7023f2-4c02-4b2d-a175-6bbe7f8c2308)
+Full Screen
+
+![image](https://github.com/KoYoungSuk/PersonalDiary3/assets/58511486/8dd27e2d-559d-4937-8906-e8d637d0b123)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
