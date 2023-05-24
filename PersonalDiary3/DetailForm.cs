@@ -18,6 +18,11 @@ namespace PersonalDiaryUpdater
         //제목이 Null: 작성 모드
         //제목이 Null이 아님: 수정/읽기 모드(modify boolean값 파라미터로 구분)
 
+       
+        //읽기 모드: 파일 열기 불가능, 텍스트 상자는 읽기 전용, 수정/작성 버튼 사용 불가
+        //작성 모드: 버튼 이름은 Write, 수정/읽기 모드 전환 불가능, 삭제 버튼 사용 불가능
+        //수정 모드: 버튼 이름은 Modify, 삭제 버튼 사용 불가능 
+
         String title;
         Global g = new Global();
         OracleConnection conn = null;
@@ -43,9 +48,11 @@ namespace PersonalDiaryUpdater
             if (modify) //작성/수정 모드
             {
                 radioButton2.Checked = true;
+                button3.Enabled = false; 
             }
             else //읽기  모드 
             {
+                toolStripMenuItem2.Enabled = false; 
                 radioButton1.Checked = true;
             }
         }
@@ -107,6 +114,8 @@ namespace PersonalDiaryUpdater
         {
             textBox2.ReadOnly = true;
             button1.Enabled = false;
+            button3.Enabled = true; 
+            toolStripMenuItem2.Enabled = false;
         }
         #endregion
 
@@ -115,6 +124,8 @@ namespace PersonalDiaryUpdater
         {
             textBox2.ReadOnly = false;
             button1.Enabled = true;
+            button3.Enabled = false; 
+            toolStripMenuItem2.Enabled = true;
         }
         #endregion
 

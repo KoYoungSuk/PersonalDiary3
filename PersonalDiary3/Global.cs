@@ -61,7 +61,7 @@ namespace PersonalDiaryUpdater
         #region["정보 메시지"] 
         public DialogResult informationmessage(String msg)
         {
-            return MessageBox.Show(msg, "PersonalDiary", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(msg, "MyDiary", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         #endregion
 
