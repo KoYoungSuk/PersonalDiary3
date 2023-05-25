@@ -133,7 +133,7 @@ namespace PersonalDiaryUpdater
             FileStream fs = new FileStream(FileName, FileMode.Open);  
             sc.Connect();
 
-            sc.UploadFile(fs, "/mnt/hdd3/Secret Documents/Self-Criticism/Before 2020-07/" + SafeFileName); //SFTP 업로드 
+            sc.UploadFile(fs, "/mnt/hdd3/Secret Documents/Diary/Before 2020-07/" + SafeFileName); //SFTP 업로드 
 
             sc.Disconnect(); 
         }
@@ -163,7 +163,7 @@ namespace PersonalDiaryUpdater
             //FileStream fs = new FileStream(FileName, FileMode.Open);
             sc.Connect();
 
-            sc.DeleteFile("/mnt/hdd3/Secret Documents/Self-Criticism/Before 2020-07/" + SafeFileName);
+            sc.DeleteFile("/mnt/hdd3/Secret Documents/Diary/Before 2020-07/" + SafeFileName);
 
             sc.Disconnect();
         }
